@@ -1,15 +1,17 @@
 package com.ifLogic.entidades;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_alternativas")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Alternativas {
 
     @Id
@@ -21,4 +23,7 @@ public class Alternativas {
     @ManyToOne
     @JoinColumn(name = "questao_id")
     private Questoes questao;
+
+    @OneToMany(mappedBy = "alternativa")
+    private List<RespostasUsuarios> respostasUsuarios = new ArrayList<>();
 }

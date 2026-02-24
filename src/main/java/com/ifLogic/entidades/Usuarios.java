@@ -1,15 +1,16 @@
 package com.ifLogic.entidades;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_usuarios")
 public class Usuarios {
@@ -25,5 +26,6 @@ public class Usuarios {
     private LocalDate dataDeNascimento;
     private LocalDate dataCriacaoConta;
 
-
+    @OneToMany(mappedBy = "usuarios")
+    private List<RespostasUsuarios> respostasUsuarios = new ArrayList<>();
 }

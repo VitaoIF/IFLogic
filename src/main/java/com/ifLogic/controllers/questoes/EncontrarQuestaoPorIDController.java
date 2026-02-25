@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/questoes")
-public class QuestoesController {
+public class EncontrarQuestaoPorIDController {
 
     @Autowired
     private EncontrarQuestaoIDService service;

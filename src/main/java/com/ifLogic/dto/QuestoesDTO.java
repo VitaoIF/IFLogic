@@ -1,5 +1,9 @@
 package com.ifLogic.dto;
 
+import com.ifLogic.entidades.Questoes;
+import lombok.Getter;
+
+@Getter
 public class QuestoesDTO {
     private Long id;
     private String enunciado;
@@ -15,19 +19,11 @@ public class QuestoesDTO {
         this.dificuldade = dificuldade;
     }
 
-    public String getEnunciado() {
-        return enunciado;
+    public QuestoesDTO(Questoes entity) {
+        id = entity.getId();
+        enunciado = entity.getEnunciado();
+        explicacao = entity.getExplicacao();
+        dificuldade = entity.getDificuldade();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getExplicacao() {
-        return explicacao;
-    }
-
-    public String getDificuldade() {
-        return dificuldade;
-    }
 }

@@ -20,6 +20,7 @@ public class AdicionarQuestaoService {
         entity.setEnunciado(dto.getEnunciado());
         entity.setDificuldade(dto.getDificuldade());
         entity.setId(dto.getId());
+        entity.setExplicacao(dto.getExplicacao());
 
         entity = repository.save(entity);
         return new QuestoesDTO(entity);

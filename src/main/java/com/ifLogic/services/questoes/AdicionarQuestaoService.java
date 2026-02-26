@@ -1,6 +1,8 @@
 package com.ifLogic.services.questoes;
 
+import com.ifLogic.dto.AlternativaDTO;
 import com.ifLogic.dto.QuestoesDTO;
+import com.ifLogic.entidades.Alternativas;
 import com.ifLogic.entidades.Questoes;
 import com.ifLogic.repositories.QuestoesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,14 @@ public class AdicionarQuestaoService {
         entity.setId(dto.getId());
         entity.setExplicacao(dto.getExplicacao());
 
+        for (AlternativaDTO altDTO : dto.getAlternativas()) {
+
+            Alternativas alternativa = new Alternativas();
+            alternativa.setTexto(altDTO.getTexto());
+            alternativa.setCorreta(altDTO.getCorreta());
+
+            entity.addAlternativa(alternativa);
+        }
         entity = repository.save(entity);
         return new QuestoesDTO(entity);
     }

@@ -20,8 +20,8 @@ public class Alternativas {
     private String texto;
     private boolean correta;
 
-    @ManyToOne
-    @JoinColumn(name = "questao_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "questao_id", nullable = false)
     private Questoes questao;
 
     @OneToMany(mappedBy = "alternativa")

@@ -33,4 +33,9 @@ public class Questoes {
         alternativa.setQuestao(this);
         this.alternativa.add(alternativa);
     }
+
+    public void removeAlternativa(Alternativas alternativa) {
+        alternativa.setQuestao(null);
+        this.alternativa.remove(alternativa);
+    }
 }

@@ -20,13 +20,12 @@ public class Questoes {
     private String enunciado;
     private String explicacao;
     private String dificuldade;
+    private String disciplina;
+    private String assunto;
+    private String origem;
+    private Integer tempoEstimado;
 
-    @OneToMany(
-            mappedBy = "questao",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY
-    )
+    @OneToMany(mappedBy = "questao", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Alternativas> alternativa = new ArrayList<>();
 
     public void addAlternativa(Alternativas alternativa) {

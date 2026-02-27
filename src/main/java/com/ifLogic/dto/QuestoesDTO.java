@@ -2,32 +2,24 @@ package com.ifLogic.dto;
 
 import com.ifLogic.entidades.Questoes;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Getter
+@Setter
 public class QuestoesDTO {
     private Long id;
     private String enunciado;
     private String explicacao;
     private String dificuldade;
+    private String disciplina;
+    private String assunto;
+    private String origem;
+    private Integer tempoEstimado;
     private List<AlternativaDTO> alternativas;
 
-    public QuestoesDTO(){}
-
-    public QuestoesDTO(Long id, String enunciado, String explicacao, String dificuldade) {
-        this.id = id;
-        this.enunciado = enunciado;
-        this.explicacao = explicacao;
-        this.dificuldade = dificuldade;
-    }
-
-    public QuestoesDTO(Long id, String enunciado, String explicacao, String dificuldade, List<AlternativaDTO> alternativas) {
-        this.id = id;
-        this.enunciado = enunciado;
-        this.explicacao = explicacao;
-        this.dificuldade = dificuldade;
-        this.alternativas = alternativas;
+    public QuestoesDTO() {
     }
 
     public QuestoesDTO(Questoes entity) {
@@ -35,11 +27,14 @@ public class QuestoesDTO {
         enunciado = entity.getEnunciado();
         explicacao = entity.getExplicacao();
         dificuldade = entity.getDificuldade();
+        disciplina = entity.getDisciplina();
+        assunto = entity.getAssunto();
+        origem = entity.getOrigem();
+        tempoEstimado = entity.getTempoEstimado();
 
         alternativas = entity.getAlternativa()
                 .stream()
                 .map(AlternativaDTO::new)
                 .toList();
     }
-
 }

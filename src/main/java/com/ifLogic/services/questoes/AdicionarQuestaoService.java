@@ -16,24 +16,25 @@ public class AdicionarQuestaoService {
     private QuestoesRepository repository;
 
     @Transactional
-    public QuestoesDTO insert(QuestoesDTO dto){
+    public QuestoesDTO insert(QuestoesDTO dto) {
         Questoes entity = new Questoes();
 
         entity.setEnunciado(dto.getEnunciado());
-        entity.setDificuldade(dto.getDificuldade());
-        entity.setId(dto.getId());
         entity.setExplicacao(dto.getExplicacao());
+        entity.setDificuldade(dto.getDificuldade());
+        entity.setDisciplina(dto.getDisciplina());
+        entity.setAssunto(dto.getAssunto());
+        entity.setOrigem(dto.getOrigem());
+        entity.setTempoEstimado(dto.getTempoEstimado());
 
         for (AlternativaDTO altDTO : dto.getAlternativas()) {
-
             Alternativas alternativa = new Alternativas();
             alternativa.setTexto(altDTO.getTexto());
             alternativa.setCorreta(altDTO.getCorreta());
-
             entity.addAlternativa(alternativa);
         }
+
         entity = repository.save(entity);
         return new QuestoesDTO(entity);
     }
-
 }
